@@ -17,6 +17,6 @@ public class Comentario {
 	private int id;
 	private String comentario;
 	private String usuario;
-	private String id_publicacion;
+	private int id_publicacion;
     
 }

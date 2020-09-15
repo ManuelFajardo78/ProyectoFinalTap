@@ -14,15 +14,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Usuario {
     @Id 
-	private int id;
-	private String cedula;
-	private String nombre;
-	private String apellido;
-	private String email;
-	private String fech_Nacimiento;
-	private String sexo;
-        private int edad;
-        private String password;
-        private String usuario;
-        private String imagen;
+    private String usuario;
+    private String password;
+    private Blob imagen;
+       
 }

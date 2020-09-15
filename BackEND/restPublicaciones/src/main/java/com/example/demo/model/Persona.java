@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-// realizador por: Fredy Vásquez M5A
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,7 +16,6 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private String email;
-	private int edad;
 	
 
 }

@@ -25,5 +25,5 @@ public class UsuarioService {
 	public List<Usuario> listarUsuario(){
 		return usuarioR.findAll();
 	}
-    
+    // 
 }
