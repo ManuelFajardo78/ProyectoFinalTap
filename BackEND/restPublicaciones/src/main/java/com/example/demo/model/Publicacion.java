@@ -8,7 +8,10 @@ import lombok.Data;
 
 @Document
 public class Publicacion {
-	private String cedula;
+	private String usuario;
 	private String publicacion;
 	private String Fecha;
+        private String imagen;
+        private String cedula;
+        private String audio;
 }
