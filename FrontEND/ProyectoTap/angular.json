@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ProyectoTap"
+    }
+  },
+  "defaultProject": "ProyectoTap",
+  "cli": {
+    "analytics": "c6099e8b-e5ef-4c2a-8b9c-224982788d93"
+  }
 }
