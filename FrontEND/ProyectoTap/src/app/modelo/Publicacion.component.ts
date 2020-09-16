@@ -1,5 +1,8 @@
 export interface Publicacion {
-    cedula: string;
+    id: number;
+    usuario: string;
     publicacion: string;
     fecha: string;
+    imagen: Blob;
+    audio: Blob;
 }
