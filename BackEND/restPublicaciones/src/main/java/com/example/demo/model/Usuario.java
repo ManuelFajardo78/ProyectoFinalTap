@@ -17,6 +17,7 @@ public class Usuario {
     @Id 
     private String usuario;
     private String password;
-    private Blob imagen;
+    private String imagen;
+    private String cedula;
        
 }

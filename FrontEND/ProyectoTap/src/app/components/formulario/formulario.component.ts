@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Persona } from '../../modelo/Persona.component';
-import { PersonaService } from '../../service/persona.service';
 import { Router } from '@angular/router';
+import { Persona } from '../../modelo/Persona.component';
 import { Usuario } from '../../modelo/Usuario.component';
+import { PersonaService } from '../../service/persona.service';
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -10,7 +10,7 @@ import { Usuario } from '../../modelo/Usuario.component';
 })
 export class FormularioComponent implements OnInit {
   model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
-  model2: Usuario = {usuario: '', password: '', imagen:  null};
+  model2: Usuario = {usuario: '', password: '', imagen:  '', cedula: this.model.cedula};
   constructor(private servicio: PersonaService, private routes: Router) {}
 
   ngOnInit(): void {
