@@ -5,6 +5,7 @@ import { Usuario } from '../../modelo/Usuario.component';
 import { PersonaService } from '../../service/persona.service';
 import * as AWS from 'aws-sdk';
 import { Buffer } from 'buffer';
+import { UsuarioService } from '../../service/usuario.service';
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -25,7 +26,7 @@ export class FormularioComponent implements OnInit {
 
   model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
   model2: Usuario = {usuario: '', password: '', cedula: this.model.cedula};
-  constructor(private servicio: PersonaService, private routes: Router) {}
+  constructor(private servicio: PersonaService, private servicio2: UsuarioService, private routes: Router) {}
   
   // S3
   albumBucketNameI = 'bucketimgen';
@@ -49,11 +50,28 @@ export class FormularioComponent implements OnInit {
       });
     }
   }
-  // tslint:disable-next-line: typedef
-  public registPersona() {
-    this.servicio.registrarPersonas(this.model).subscribe(data => console.log(data));
-    this.routes.navigate(['login']);
+
+  public realizarRegistro(){
+    if (this.archivo && this.model.cedula !== '' && this.model2.usuario !== '' && this.model2.password !== ''){
+      this.registPersona();
+      this.registUser();
+      if(this.subeft === 0){
+        this.registrarBI();
+      }
+      this.routes.navigate(['login']);
+    }else{
+      alert('Revisar que la imagen o los datos necesarios esten ingresados');
+    }
   }
+  // tslint:disable-next-line: typedef
+  private registPersona() {
+    this.servicio.registrarPersonas(this.model).subscribe(data => console.log(data));
+  }
+
+  private registUser(){
+    this.servicio2.registrarUsuario(this.model2).subscribe(data => console.log(data));
+  }
+
   public capturar() {
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 300, 250);
     this.foto = this.canvas.nativeElement.toDataURL("image/png");
@@ -93,7 +111,7 @@ export class FormularioComponent implements OnInit {
   
   onClickSubir = async (event) => {
     event.preventDefault();
-    if (this.archivo) {
+    if (this.archivo && this.model.cedula !== '') {
       try {
         console.log(this.archivo);
         this.subiendo = true;
