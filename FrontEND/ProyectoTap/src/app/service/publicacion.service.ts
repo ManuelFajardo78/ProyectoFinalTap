@@ -12,18 +12,11 @@ export class PublicacionService {
 
   // tslint:disable-next-line: typedef
   obtenerPublicaciones(){
-    return this.http.get<Publicacion[]>(this.Url + '/list');
+    return this.http.get<Publicacion[]>(this.Url + '/listpubl');
   }
 
   // tslint:disable-next-line: typedef
-  buscarPublicaciones(cedula: string):
-    // tslint:disable-next-line: ban-types
-    Observable <Object> {
-      return this.http.get(`${this.Url}/buscar/{cedula}?cedula=${cedula}`);
-    }
-
-  // tslint:disable-next-line: typedef
   registrarPublicacion(publicacion: Publicacion){
-    return this.http.post<Publicacion>(this.Url + '/', publicacion);
+    return this.http.post<Publicacion>(this.Url + '/guardarpublic', publicacion);
   }
 }

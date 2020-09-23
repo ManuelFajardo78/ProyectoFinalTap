@@ -21,8 +21,4 @@ public class PublicacionService {
 	public List<Publicacion> listarPublicaciones(){
 		return publiR.findAll();
 	}
-	
-	public List<Publicacion> buscarPorCedula(String ced) {
-		return publiR.findByCedula(ced);
-	}
 }

@@ -11,11 +11,11 @@ export class PersonaService {
 
   // tslint:disable-next-line: typedef
   obtenerPersonas(){
-    return this.http.get<Persona[]>(this.Url + '/list');
+    return this.http.get<Persona[]>(this.Url + '/listpers');
   }
 
   // tslint:disable-next-line: typedef
   registrarPersonas(persona: Persona){
-    return this.http.post<Persona>(this.Url + '/', persona);
+    return this.http.post<Persona>(this.Url + '/guardarpers', persona);
   }
 }

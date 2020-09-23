@@ -12,12 +12,12 @@ export class UsuarioService {
 
   // tslint:disable-next-line: typedef
   obtenerUsuarios(){
-    return this.http.get<Usuario[]>(this.Url + '/list');
+    return this.http.get<Usuario[]>(this.Url + '/listuser');
   }
 
   // tslint:disable-next-line: typedef
   registrarUsuario(user: Usuario){
-    return this.http.post<Usuario>(this.Url + '/', user);
+    return this.http.post<Usuario>(this.Url + '/guardaruser', user);
   }
 
   buscarPublicaciones(user: string, pass: string):

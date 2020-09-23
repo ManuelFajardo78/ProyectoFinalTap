@@ -13,24 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Publicacion;
 import com.example.demo.service.PublicacionService;
+
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api")
+@RequestMapping()
 public class PublicacionControl {
 	@Autowired
 	PublicacionService publiS;
-	@PostMapping
+	@PostMapping(path = "/guardarpublic")
 	@CrossOrigin
 	public ResponseEntity savePublicacion(@RequestBody Publicacion publicacion) {
 		publiS.crearPublicacion(publicacion);
-		return ResponseEntity.ok("OK");
+		return ResponseEntity.ok("OK guardado");
 	}
-	@GetMapping(path = "/list", produces = "application/json")
+	@GetMapping(path = "/listpubl", produces = "application/json")
 	public List<Publicacion> listarPublicaciones(){
 		return publiS.listarPublicaciones();
-	}
-	@GetMapping(path = "/buscar/{cedula}", produces = "application/json")
-	public List<Publicacion> buscarPublicacionesPorCedula(String cedula){
-		return publiS.buscarPorCedula(cedula);
 	}
 }

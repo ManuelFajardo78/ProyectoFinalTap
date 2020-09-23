@@ -1,7 +1,5 @@
 package com.example.demo.rest;
 
-//realizador por: Fredy Vásquez M5A
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,18 +15,18 @@ import com.example.demo.service.ComentarioService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api")
+@RequestMapping()
 public class ComentarioControl {
 	@Autowired
 	ComentarioService comentarioS;
-	@PostMapping
+	@PostMapping(path = "/guardarcoment")
 	@CrossOrigin
 	public ResponseEntity saveComentario(@RequestBody Comentario comentario) {
 		comentarioS.crearComentario(comentario);
-		return ResponseEntity.ok("OK");
+		return ResponseEntity.ok("OK comentario");
 	}
 	
-	@GetMapping(path = "/list", produces = "application/json")
+	@GetMapping(path = "/listcoment", produces = "application/json")
 	public List<Comentario> listarComentario(){
 		return comentarioS.listarComentario();
 	}

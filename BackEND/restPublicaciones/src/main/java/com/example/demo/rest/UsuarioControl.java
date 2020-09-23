@@ -1,6 +1,5 @@
 package com.example.demo.rest;
 
-//realizador por: Fredy Vásquez M5A
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +22,14 @@ import com.example.demo.service.UsuarioService;
 public class UsuarioControl {
 	@Autowired
 	UsuarioService usuarioS;
-	@PostMapping
+	@PostMapping(path = "/guardaruser")
 	@CrossOrigin
 	public ResponseEntity saveUsuario(@RequestBody Usuario usuario) {
 		usuarioS.crearUsuario(usuario);
-		return ResponseEntity.ok("OK");
+		return ResponseEntity.ok("OK usuario");
 	}
 	
-	@GetMapping(path = "/list", produces = "application/json")
+	@GetMapping(path = "/listuser", produces = "application/json")
 	public List<Usuario> listarUsuario(){
 		return usuarioS.listarUsuario();
 	}
