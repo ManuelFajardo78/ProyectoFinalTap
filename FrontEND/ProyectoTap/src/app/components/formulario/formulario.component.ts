@@ -3,15 +3,14 @@ import { Router } from '@angular/router';
 import { Persona } from '../../modelo/Persona.component';
 import { Usuario } from '../../modelo/Usuario.component';
 import { PersonaService } from '../../service/persona.service';
+import * as AWS from 'aws-sdk';
+import { Buffer } from 'buffer';
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-  model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
-  model2: Usuario = {usuario: '', password: '', imagen:  '', cedula: this.model.cedula};
-  constructor(private servicio: PersonaService, private routes: Router) {}
 
    // imagen
    @ViewChild('video') video: ElementRef;
@@ -23,6 +22,18 @@ export class FormularioComponent implements OnInit {
   showImagen = false;
   error = false;
   subiendo = false;
+
+  model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
+  model2: Usuario = {usuario: '', password: '', cedula: this.model.cedula};
+  constructor(private servicio: PersonaService, private routes: Router) {}
+  
+  // S3
+  albumBucketNameI = 'bucketimgen';
+  s3 = new AWS.S3({
+    apiVersion: '2006-03-01',
+    params: {Bucket: 'bucketimgen'},
+  });
+  
   // comprobra;
   ingimg = true;
   ingdatos = true;
@@ -30,7 +41,14 @@ export class FormularioComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  public ngAfterViewInit() {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(screenStream => {
+        this.video.nativeElement.srcObject = screenStream;
+        this.video.nativeElement.play();
+      });
+    }
+  }
   // tslint:disable-next-line: typedef
   public registPersona() {
     this.servicio.registrarPersonas(this.model).subscribe(data => console.log(data));
@@ -42,13 +60,14 @@ export class FormularioComponent implements OnInit {
     this.foto = this.foto.split(",")[1];
     this.archivo = this.foto;
   }
+
   public async registrarBI() {
     if (this.archivo) {
       try {
         this.subiendo = true;
         const data = await new AWS.S3.ManagedUpload({
           params: {
-            //Bucket: this.albumBucketNameI,
+            Bucket: this.albumBucketNameI,
             Key: this.model.cedula + '.jpg',
             Body: new Buffer(this.archivo, 'base64'),
             ACL: 'public-read',
@@ -71,18 +90,18 @@ export class FormularioComponent implements OnInit {
       this.ingimg = false;
     }
   }
+  
   onClickSubir = async (event) => {
     event.preventDefault();
-
     if (this.archivo) {
       try {
         console.log(this.archivo);
         this.subiendo = true;
         const data = await new AWS.S3.ManagedUpload({
           params: {
-            //Bucket: this.albumBucketNameI,
+            Bucket: this.albumBucketNameI,
             Key: this.model.cedula + '.jpg',
-            Body: new Buffer(this.archivo, 'base64'),
+            Body: this.archivo,
             ACL: 'public-read',
           },
         }).promise();

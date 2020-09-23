@@ -35,4 +35,13 @@ public class UsuarioControl {
 		return usuarioS.listarUsuario();
 	}
 	
+	@GetMapping(path = "/list", produces = "application/json")
+	public List<Usuario> listarUsuario(){
+		return usuarioS.listarUsuario();
+	}
+	
+	@GetMapping(path = "/buscar/{user},{pass}", produces = "application/json")
+	public Usuario verificarUsuario(String user, String pass){
+		return usuarioS.verifUser(user, pass);
+	}
 }

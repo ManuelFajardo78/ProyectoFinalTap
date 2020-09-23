@@ -9,5 +9,7 @@ import com.example.demo.model.Usuario;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UsuarioRepository extends MongoRepository<Usuario, String>{
-    
+	
+	@Query(value = "{$and:[{usuario: ?0},{password: ?1}]}")
+	Usuario usuarioByUseryPass(String user, String pass);
 }

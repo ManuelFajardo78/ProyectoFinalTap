@@ -15,6 +15,4 @@ public class Publicacion {
 	private String usuario;
 	private String publicacion;
 	private String Fecha;
-        private Blob imagen;
-        private Blob audio;
 }

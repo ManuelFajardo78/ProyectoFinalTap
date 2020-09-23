@@ -11,7 +11,6 @@ import lombok.Data;
 @Document
 public class Persona {
 	@Id 
-	private int id;
 	private String cedula;
 	private String nombre;
 	private String apellido;

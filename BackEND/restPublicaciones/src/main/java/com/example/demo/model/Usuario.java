@@ -17,7 +17,6 @@ public class Usuario {
     @Id 
     private String usuario;
     private String password;
-    private String imagen;
     private String cedula;
        
 }

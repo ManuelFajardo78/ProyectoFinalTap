@@ -24,4 +24,8 @@ public class UsuarioService {
 		return usuarioR.findAll();
 	}
     // 
+	
+	public Usuario verifUser(String user, String pass) {
+		return usuarioR.usuarioByUseryPass(user, pass);
+	}
 }

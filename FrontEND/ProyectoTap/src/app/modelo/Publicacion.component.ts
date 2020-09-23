@@ -3,6 +3,4 @@ export interface Publicacion {
     usuario: string;
     publicacion: string;
     fecha: string;
-    imagen: Blob;
-    audio: Blob;
 }

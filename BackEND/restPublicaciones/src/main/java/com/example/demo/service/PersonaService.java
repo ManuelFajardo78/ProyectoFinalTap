@@ -23,6 +23,9 @@ public class PersonaService {
 		return personaR.findAll();
 	}
 	
+	
+	
+	
 	// Tarea 1-2
 	
 	public List<Persona> personaBYnombreyAapellido(String nom, String apell) {
