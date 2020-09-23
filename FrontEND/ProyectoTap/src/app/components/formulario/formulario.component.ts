@@ -108,7 +108,7 @@ export class FormularioComponent implements OnInit {
       this.ingimg = false;
     }
   }
-  
+
   onClickSubir = async (event) => {
     event.preventDefault();
     if (this.archivo && this.model.cedula !== '') {
