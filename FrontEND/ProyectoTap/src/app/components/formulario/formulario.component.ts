@@ -26,15 +26,20 @@ export class FormularioComponent implements OnInit {
 
   model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
   model2: Usuario = {usuario: '', password: '', cedula: this.model.cedula};
-  constructor(private servicio: PersonaService, private servicio2: UsuarioService, private routes: Router) {}
-  
+  constructor(private servicio: PersonaService, private servicio2: UsuarioService, private routes: Router) {
+    // Inicializar el proveedor de credenciales de Amazon Cognito
+    AWS.config.region = 'us-east-1'; // Región
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-1:49335ef5-a888-4532-b1ac-9ee9dad4ba3d',
+});
+  }
   // S3
   albumBucketNameI = 'bucketimgen';
   s3 = new AWS.S3({
     apiVersion: '2006-03-01',
     params: {Bucket: 'bucketimgen'},
   });
-  
+
   // comprobra;
   ingimg = true;
   ingdatos = true;
@@ -64,11 +69,11 @@ export class FormularioComponent implements OnInit {
     }
   }
   // tslint:disable-next-line: typedef
-  private registPersona() {
+  public registPersona() {
     this.servicio.registrarPersonas(this.model).subscribe(data => console.log(data));
   }
 
-  private registUser(){
+  public registUser(){
     this.servicio2.registrarUsuario(this.model2).subscribe(data => console.log(data));
   }
 
