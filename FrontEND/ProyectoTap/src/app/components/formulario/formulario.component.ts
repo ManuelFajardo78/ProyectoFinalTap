@@ -92,6 +92,7 @@ export class FormularioComponent implements OnInit {
           params: {
             Bucket: this.albumBucketNameI,
             Key: this.model.cedula + '.jpg',
+            // tslint:disable-next-line: deprecation
             Body: new Buffer(this.archivo, 'base64'),
             ACL: 'public-read',
           },
