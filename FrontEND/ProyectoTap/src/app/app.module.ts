@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { PrincipalComponent } from './components/principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
     FooterComponent,
     FormularioComponent,
     LoginComponent,
+    PrincipalComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@ export class UsuarioService {
     return this.http.post<Usuario>(this.Url + '/guardaruser', user);
   }
 
-  buscarPublicaciones(user: string, pass: string):
+  buscarUser(user: string, pass: string):
     // tslint:disable-next-line: ban-types
     Observable <Object> {
       return this.http.get(`${this.Url}/buscar/{user},{pass}?pass=${pass}&user=${user}`);

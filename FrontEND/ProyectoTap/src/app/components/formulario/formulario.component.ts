@@ -27,14 +27,14 @@ export class FormularioComponent implements OnInit {
   model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
   model2: Usuario = {usuario: '', password: '', cedula: this.model.cedula};
   constructor(private servicio: PersonaService, private servicio2: UsuarioService, private routes: Router) {}
-  
+
   // S3
   albumBucketNameI = 'bucketimgen';
   s3 = new AWS.S3({
     apiVersion: '2006-03-01',
     params: {Bucket: 'bucketimgen'},
   });
-  
+
   // comprobra;
   ingimg = true;
   ingdatos = true;

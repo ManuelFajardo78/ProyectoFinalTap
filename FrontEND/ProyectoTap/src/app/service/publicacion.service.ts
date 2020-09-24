@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PublicacionService {
-  Url = 'http://localhost:9494/api';
+  Url = 'http://localhost:9494/';
   constructor(private http: HttpClient) { }
 
   // tslint:disable-next-line: typedef
