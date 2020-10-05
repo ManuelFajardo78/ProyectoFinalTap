@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/modelo/Usuario.component';
+
 
 @Component({
   selector: 'app-principal',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-
+ usuario: Usuario;
   constructor() { }
 
   ngOnInit(): void {
+    this.usuario;
   }
 
 }

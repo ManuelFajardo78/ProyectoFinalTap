@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UsuarioService } from '../../service/usuario.service';
 import { Usuario } from '../../modelo/Usuario.component';
 import { Router } from '@angular/router';
@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  model: Usuario = {usuario: '', password: '', cedula: ''};
-  @Input() user: any;
+  public model: Usuario = {usuario: '', password: '', cedula: ''};
+  user: any;
   constructor(private servicio: UsuarioService, private routes: Router) { }
   ngOnInit(): void {
   }

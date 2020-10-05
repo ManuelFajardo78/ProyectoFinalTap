@@ -24,20 +24,20 @@ export class FormularioComponent implements OnInit {
   error = false;
   subiendo = false;
 
-  model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
-  model2: Usuario = {usuario: '', password: '', cedula: this.model.cedula};
+  public model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
+  public model2: Usuario = {usuario: '', password: '', cedula: this.model.cedula};
   constructor(private servicio: PersonaService, private servicio2: UsuarioService, private routes: Router) {
-    // Inicializar el proveedor de credenciales de Amazon Cognito
-    AWS.config.region = 'us-east-1'; // Región
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'us-east-1:49335ef5-a888-4532-b1ac-9ee9dad4ba3d',
-});
+    // Initialize the Amazon Cognito credentials provider
+  AWS.config.region = 'us-east-1'; // Region
+  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-1:4beca4a9-a553-4d94-aefd-5f032f88c835',
+  });
   }
   // S3
-  albumBucketNameI = 'bucketimgen';
+  albumBucketNameI = 'bucketimgen2';
   s3 = new AWS.S3({
     apiVersion: '2006-03-01',
-    params: {Bucket: 'bucketimgen'},
+    params: {Bucket: 'bucketimgen2'},
   });
 
   // comprobra;

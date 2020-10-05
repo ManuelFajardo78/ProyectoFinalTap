@@ -22,7 +22,7 @@ import com.example.demo.service.UsuarioService;
 public class UsuarioControl {
 	@Autowired
 	UsuarioService usuarioS;
-	@PostMapping(path = "/guardaruser")
+	@PostMapping(path = "/guardarusuario")
 	@CrossOrigin
 	public ResponseEntity saveUsuario(@RequestBody Usuario usuario) {
 		usuarioS.crearUsuario(usuario);
