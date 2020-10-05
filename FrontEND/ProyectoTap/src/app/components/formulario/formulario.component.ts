@@ -91,7 +91,7 @@ export class FormularioComponent implements OnInit {
         const data = await new AWS.S3.ManagedUpload({
           params: {
             Bucket: this.albumBucketNameI,
-            Key: this.model.cedula + '.jpg',
+            Key: this.model2.usuario + '.jpg',
             // tslint:disable-next-line: deprecation
             Body: new Buffer(this.archivo, 'base64'),
             ACL: 'public-read',
@@ -117,14 +117,14 @@ export class FormularioComponent implements OnInit {
 
   onClickSubir = async (event) => {
     event.preventDefault();
-    if (this.archivo && this.model.cedula !== '') {
+    if (this.archivo && this.model2.usuario !== '') {
       try {
         console.log(this.archivo);
         this.subiendo = true;
         const data = await new AWS.S3.ManagedUpload({
           params: {
             Bucket: this.albumBucketNameI,
-            Key: this.model.cedula + '.jpg',
+            Key: this.model2.usuario + '.jpg',
             Body: this.archivo,
             ACL: 'public-read',
           },

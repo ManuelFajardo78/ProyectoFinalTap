@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public model: Usuario = {usuario: '', password: '', cedula: ''};
-  user: any;
+  user: any = null;
   constructor(private servicio: UsuarioService, private routes: Router) { }
   ngOnInit(): void {
   }
 
-  public ingreso(){
+  ingreso(){
     this.servicio.buscarUser(this.model.usuario, this.model.password).subscribe(datos => {
       this.user = datos;
       console.log(datos);
