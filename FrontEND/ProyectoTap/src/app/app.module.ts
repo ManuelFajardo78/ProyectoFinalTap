@@ -11,6 +11,12 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { PrincipalComponent } from './components/principal/principal.component';
+import { FormPublicacionComponent } from './components/form-publicacion/form-publicacion.component';
+import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import { TarjetaPublicacionesComponent } from './components/tarjeta-publicaciones/tarjeta-publicaciones.component';
+import { PublicacionComponent } from './components/publicacion/publicacion.component';
+import { PublicacionService } from './service/publicacion.service';
+import { PersonaService } from './service/persona.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,10 @@ import { PrincipalComponent } from './components/principal/principal.component';
     FormularioComponent,
     LoginComponent,
     PrincipalComponent,
+    FormPublicacionComponent,
+    PublicacionesComponent,
+    TarjetaPublicacionesComponent,
+    PublicacionComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +38,8 @@ import { PrincipalComponent } from './components/principal/principal.component';
     routing,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [PersonaService,
+    PublicacionService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -17,7 +17,7 @@ html,
 .social_icon span {
     font-size: 60px;
     margin-left: 10px;
-    color: #FF0000;
+    color: red;
 }
 
 .social_icon span:hover {
