@@ -28,4 +28,8 @@ public class UsuarioService {
 	public Usuario verifUser(String user, String pass) {
 		return usuarioR.usuarioByUseryPass(user, pass);
 	}
+	
+	public Usuario buscarUser(String user) {
+		return usuarioR.findByUsuario(user);
+	}
 }

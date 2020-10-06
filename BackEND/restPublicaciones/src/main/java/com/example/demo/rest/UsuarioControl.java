@@ -38,4 +38,8 @@ public class UsuarioControl {
 	public Usuario verificarUsuario(String user, String pass){
 		return usuarioS.verifUser(user, pass);
 	}
+	@GetMapping(path = "/buscar2/{user}", produces = "application/json")
+	public Usuario buscarUsuario(String user){
+		return usuarioS.buscarUser(user);
+	}
 }

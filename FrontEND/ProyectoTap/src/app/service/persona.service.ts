@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Persona } from '../modelo/Persona.component';
 
 @Injectable({
@@ -18,4 +19,10 @@ export class PersonaService {
   registrarPersonas(persona: Persona){
     return this.http.post<Persona>(this.Url + '/guardarpers', persona);
   }
+
+  buscarPersonas(cedula: string):
+    Observable <Object> {
+      return this.http.get(`${this.Url}/cedula/{cedula}?cedula=${cedula}`);
+    }
+
 }

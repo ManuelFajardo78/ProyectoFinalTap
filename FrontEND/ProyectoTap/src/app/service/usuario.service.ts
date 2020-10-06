@@ -25,4 +25,9 @@ export class UsuarioService {
     Observable <Object> {
       return this.http.get(`${this.Url}/buscar/{user},{pass}?pass=${pass}&user=${user}`);
     }
+  obtenerUser2(user: string):
+    // tslint:disable-next-line: ban-types
+    Observable <Object> {
+      return this.http.get(`${this.Url}/buscar2/{user}?user=${user}`);
+    }
 }
