@@ -12,10 +12,13 @@ import { UserIngreso } from '../../modelo/UserIngreso.component';
 })
 export class LoginComponent implements OnInit {
   public model: Usuario = {usuario: '', password: '', cedula: ''};
-  public model2: UserIngreso = {id: 1, usuario: this.model.usuario};
+  model2: UserIngreso = {id: 1, usuario: ''};
   user: any;
   constructor(private servicio: UsuarioService, private routes: Router, private servicio2: UseringresoService) { 
-    this.servicio2.eliminarBY(1);
+    this.servicio2.eliminarBY(1).subscribe(datos => {
+      this.user = datos;
+      console.log(datos);
+    });
   }
   ngOnInit(): void {
   }
@@ -26,6 +29,7 @@ export class LoginComponent implements OnInit {
       console.log(datos);
     });
     if (this.user !== null){
+      this.model2.usuario = this.model.usuario;
       this.servicio2.registrarUser(this.model2).subscribe(datos => {
         this.user = datos;
         console.log(datos);

@@ -20,7 +20,7 @@ export class UseringresoService {
     return this.http.post<UserIngreso>(this.Url + '/guardaruserig', user);
   }
 
-  eliminarBY(id: number){
+  public eliminarBY(id: number){
     console.log('eliminado');
     return this.http.delete(this.Url + '/eliminarbyid/' + id);
   }
