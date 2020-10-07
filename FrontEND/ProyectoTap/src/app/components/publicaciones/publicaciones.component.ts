@@ -8,11 +8,12 @@ import { PublicacionService } from '../../service/publicacion.service';
   styleUrls: ['./publicaciones.component.css']
 })
 export class PublicacionesComponent implements OnInit {
-  model: Publicacion = {id: 0, usuario: '', publicacion: '', fecha: ''};
+  publicacion: Publicacion;
   publicaciones: any;
   constructor(private servicio: PublicacionService) { }
 
   ngOnInit(): void {
+    this.buscarPublicacion();
   }
   // tslint:disable-next-line: typedef
   buscarPublicacion(){

@@ -11,8 +11,8 @@ const appRoutes = [
     { path: 'login', component: LoginComponent, pathMatch: 'full'  },
     { path: 'registro', component: BodyComponent, pathMatch: 'full' },
     { path: 'ingreso', component: PrincipalComponent, pathMatch: 'full' },
-    { path: 'ingreso/registrarpublic', component: FormPublicacionComponent, pathMatch: 'full'  },
-    { path: 'ingreso/listapublic', component: PublicacionesComponent, pathMatch: 'full' },
+    { path: 'ingreso/registrarpublic', component: FormPublicacionComponent},
+    { path: 'ingreso/listapublic', component: PublicacionesComponent},
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

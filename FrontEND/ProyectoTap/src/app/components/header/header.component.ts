@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UseringresoService } from 'src/app/service/useringreso.service';
-import { PersonaService } from '../../service/persona.service';
-import { UsuarioService } from '../../service/usuario.service';
+import { LoginComponent } from '../login/login.component';
+import { Usuario } from 'src/app/modelo/Usuario.component';
+import { Persona } from 'src/app/modelo/Persona.component';
+import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,10 @@ import { UsuarioService } from '../../service/usuario.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private servicio: UseringresoService, private servicio2: PersonaService, private servicio3: UsuarioService) { 
+usuario: Usuario = LoginComponent.ususario;
+persona: Persona = LoginComponent.persona;
+pers: any;
+  constructor() {
   }
 
   ngOnInit(): void {

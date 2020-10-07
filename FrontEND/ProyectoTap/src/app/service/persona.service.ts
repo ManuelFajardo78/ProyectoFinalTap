@@ -22,7 +22,8 @@ export class PersonaService {
 
   buscarPersonas(cedula: string):
     Observable <Object> {
-      return this.http.get(`${this.Url}/cedula/{cedula}?cedula=${cedula}`);
+      //return this.http.get(`${this.Url}/cedula/{cedula}?cedula=${cedula}`);
+      return this.http.get(this.Url + '/cedula/' + cedula);
     }
 
 }

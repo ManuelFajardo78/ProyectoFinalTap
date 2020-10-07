@@ -20,6 +20,6 @@ export class FormPublicacionComponent implements OnInit {
   // tslint:disable-next-line: typedef
   resgistarPublicacion(){
     this.servicio.registrarPublicacion(this.model).subscribe(data => console.log(data));
-    this.routes.navigate(['listPublic']);
+    this.routes.navigate(['ingreso']);
   }
 }
