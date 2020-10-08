@@ -10,18 +10,60 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="usuario" name="usuario" type="text" placeholder="Usuario" class="form-control" [(ngModel)]="model.usuario">
+                                <input id="usuario" name="usuario" type="text" placeholder="Usuario" class="form-control" [(ngModel)]="model3.usuario">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="comment">  Publicación:</label>
-                            <textarea class="form-control" rows="5" id="publicacion" name="publicacion" [(ngModel)]="model.publicacion"></textarea>
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <label for="comment">  Cargar Imagen:</label>
+                                <table>
+                                    <tr>
+                                        <td id="miCameraOnline" width="50%">
+                                            <video #video id="video" width="300" height="250" autoplay class="center"></video>
+                                            <div>
+                                                <button href="#" (click)="capturar()">¡Capturar!</button>
+                                            </div>
+                                            <div class="error" *ngIf="error">
+                                                <h1>Ha ocurrido un error</h1>
+                                            </div>
+                                        </td>
+                                        <td width="50%">
+                                            <canvas #canvas id="canvas" width="300" height="250" class="center"></canvas>
+                                        </td>
+                                    </tr>
+                                    <div class="form-group">
+                                        <tr>
+                                            <td width="50%">Cargar Imagen :</td>
+                                            <td width="50%">
+                                                <form>
+                                                    <input type="file" name="archivo" (change)="onChange($event)" />
+                                                    <h5 *ngIf="subiendo">Subiendo imagen...</h5>
+                                                    <button href="#" (click)="onClickSubir($event)">Subir Imagen Seleccionada</button>
+                                                    <div class="" *ngIf="showImagen" style="width: 100px;">
+                                                        <h1>Imagen subida</h1>
+                                                        <a [href]="urlImagen" target="_blank"></a>
+                                                        <img class="imgn-fluid" [src]="urlImagen" alt="" />
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <label for="comment">  Publicación:</label>
+                                <input id="publicacion" name="publicacion" type="text" placeholder="¿Que estas pensando?" class="form-control" [(ngModel)]="model3.publicacion">
+                            </div>
                         </div>
                         <div>
 
                         </div>
                         <div align="center">
-                            <button (click)="resgistarPublicacion()" type="button" class="btn btn-lg btn-primary">Registrar Publicación</button>
+                            <button (click)="realizarPublicacion()" type="button" class="btn btn-lg btn-primary">Registrar Publicación</button>
                         </div>
                     </fieldset>
                 </form>

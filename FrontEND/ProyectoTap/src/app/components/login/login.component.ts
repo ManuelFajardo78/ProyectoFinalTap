@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line: typedef
   ingreso(){
     this.servicio.buscarUser(this.model.usuario, this.model.password).subscribe(datos => {
       this.user = datos;

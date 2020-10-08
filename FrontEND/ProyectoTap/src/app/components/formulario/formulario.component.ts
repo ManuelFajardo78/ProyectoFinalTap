@@ -73,17 +73,19 @@ export class FormularioComponent implements OnInit {
     this.servicio.registrarPersonas(this.model).subscribe(data => console.log(data));
   }
 
+  // tslint:disable-next-line: typedef
   public registUser(){
     this.servicio2.registrarUsuario(this.model2).subscribe(data => console.log(data));
   }
 
   public capturar() {
-    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 300, 250);
-    this.foto = this.canvas.nativeElement.toDataURL("image/png");
-    this.foto = this.foto.split(",")[1];
+    var context = this.canvas.nativeElement.getContext('2d').drawImage(this.video.nativeElement, 0, 0, 300, 250);
+    this.foto = this.canvas.nativeElement.toDataURL('image/png');
+    this.foto = this.foto.split(',')[1];
     this.archivo = this.foto;
   }
 
+  // tslint:disable-next-line: typedef
   public async registrarBI() {
     if (this.archivo) {
       try {
