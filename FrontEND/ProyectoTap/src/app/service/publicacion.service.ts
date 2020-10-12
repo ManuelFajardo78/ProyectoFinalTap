@@ -24,6 +24,7 @@ export class PublicacionService {
     return this.http.get(this.Url + '/publcount');
   }
 
+  // tslint:disable-next-line: typedef
   obtenerPublicacionesBY(usuario: string){
     return this.http.get<Publicacion[]>(this.Url + '/listpubl/' + usuario);
   }

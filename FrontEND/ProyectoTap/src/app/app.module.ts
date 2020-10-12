@@ -18,6 +18,8 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 import { PublicacionService } from './service/publicacion.service';
 import { PersonaService } from './service/persona.service';
 import { TarjetaComentarioComponent } from './components/tarjeta-comentario/tarjeta-comentario.component';
+import { PublicacionesuserComponent } from './components/publicacionesuser/publicacionesuser.component';
+import { TarjetaPublicacionesuserComponent } from './components/tarjeta-publicacionesuser/tarjeta-publicacionesuser.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { TarjetaComentarioComponent } from './components/tarjeta-comentario/tarj
     PublicacionesComponent,
     TarjetaPublicacionesComponent,
     PublicacionComponent,
-    TarjetaComentarioComponent
+    TarjetaComentarioComponent,
+    PublicacionesuserComponent,
+    TarjetaPublicacionesuserComponent
   ],
   imports: [
     BrowserModule,
