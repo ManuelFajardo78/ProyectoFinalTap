@@ -1,14 +1,18 @@
-<div class="col mb-4" align="center">
-    <div class="card" style="width: 19rem;">
-        <img class="card-img-top" src="https://bucketimgen2.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Usuario: {{publicaciones.usuario}}</h5>
-            <p class="card-text">{{publicaciones.publicacion}}</p>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img class="card-img-top" src="https://bucketimgen2.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.jpg" alt="Card image cap">
+            <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload">
+            </audio>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Fecha: {{publicaciones.fecha}}</li>
-        </ul>
-        <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload">
-        </audio>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Usuario: {{publicaciones.usuario}}</h5>
+                <p class="card-text">{{publicaciones.publicacion}} </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Fecha: {{publicaciones.fecha}}</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
