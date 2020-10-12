@@ -1,4 +1,4 @@
-<div class="card mb-3" style="max-width: 1050px;">
+<div class="card mb-3" style="max-width: 1090px;">
     <div class="row no-gutters">
         <form class="form-inline my-2 my-lg-0">
             <img src="https://bucketimgen2.s3.amazonaws.com/{{publicaciones.usuario}}.jpg" width="25" height="30" alt="../../../assets/Imagen/avatar.png">
@@ -19,8 +19,17 @@
                 </div>
             </div>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-
-        </form>
+    </div>
+    <div class="row no-gutters">
+        <h5 class="card-title">Comentarios:</h5>
+        <div align="center" class="row row-cols-1">
+            <app-tarjeta-comentario [comentarios]="comentario" *ngFor="let comentario of comentarios let id=index;" [indice]="id"></app-tarjeta-comentario>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Comentario" aria-label="Comentario" aria-describedby="basic-addon2" [(ngModel)]="model.comentario">
+            <div class="input-group-append">
+                <button (click)="registrarComentario()" class="btn btn-outline-secondary" type="button">Comentar</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -32,8 +32,13 @@ public class ComentarioControl {
 	}
 	
 	@GetMapping(path = "/comencount", produces = "application/json")
-	public long contarPublicaciones(){
+	public long contarComentario(){
 		return comentarioS.contarC();
+	}
+	
+	@GetMapping(path = "/listcomen/{id}", produces = "application/json")
+	public List<Comentario> listarComentarioBY(int id){
+		return comentarioS.listarComentarioByID(id);
 	}
 	
 }

@@ -27,4 +27,8 @@ public class ComentarioService {
 	public long contarC(){
 		return comentarioR.count();
 	}
+	
+	public List<Comentario> listarComentarioByID(int id){
+		return comentarioR.comentarioByIDP(id);
+	}
 }

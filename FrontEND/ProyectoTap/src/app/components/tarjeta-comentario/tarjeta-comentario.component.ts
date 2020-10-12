@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Comentario } from '../../modelo/Comentario.component';
 
 @Component({
   selector: 'app-tarjeta-comentario',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarjetaComentarioComponent implements OnInit {
 
-  constructor() { }
+  @Input() comentarios: Comentario;
+  @Input() indice: number;
+  @Output() publicSleccionado: EventEmitter<number>;
+  constructor() {
+    this.publicSleccionado = new EventEmitter();
+  }
 
   ngOnInit(): void {
   }
