@@ -34,9 +34,8 @@ public class PersonaControl {
 		return personaS.listarPersona();
 	}
 	
-	// Uso del DTO
 	@GetMapping(path = "/cedula/{cedula}")
-	public PersonaDTO buscarNombrePorCedula(@PathVariable String cedula) {
-		return personaS.nombreCompleto(cedula);
+	public Persona buscarPorCedula(@PathVariable String cedula) {
+		return personaS.personaBY(cedula);
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,12 +36,34 @@ public class UserIngresoControl {
 	
 	@PutMapping("/useringresoby/{id},{username}")
 	@CrossOrigin
-	public  UserIngreso updateUser(@PathVariable String  username, @PathVariable int id) {
-        return usuarioS.actUser(username, id);
+	public  ResponseEntity<HttpStatus> updateUser(@PathVariable String  username, @PathVariable int id) {
+		try {
+			usuarioS.actUser(username, id);
+			 return new ResponseEntity<>(HttpStatus.OK);
+		  } catch (Exception e) {
+		    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		  }
     }
 	
 	@GetMapping(path = "/listuseringreso", produces = "application/json")
 	public List<UserIngreso> listarUsuario(){
 		return usuarioS.listarUser();
 	}
+	
+	//@DeleteMapping("/eliminarbyid/{id}")
+	//@CrossOrigin
+	//public  void updateUser(@PathVariable int id) {
+    //    usuarioS.eliminarbyID(id);
+    //}
+	@DeleteMapping("/eliminarbyid/{id}")
+	@CrossOrigin
+	public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") int id) {
+		  try {
+			usuarioS.eliminarbyID(id);
+		    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		  } catch (Exception e) {
+		    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		  }
+		}
+	
 }

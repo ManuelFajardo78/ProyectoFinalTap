@@ -31,4 +31,8 @@ public class UserIngresoService {
 		userIngresoR.deleteById(id);
 		return userIngresoR.save(userIngreso);
 	}
+	public void eliminarbyID(int id) {
+		userIngresoR.deleteById(id);
+	}
+	
 }

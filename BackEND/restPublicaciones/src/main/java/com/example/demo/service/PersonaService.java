@@ -22,13 +22,9 @@ public class PersonaService {
 	public List<Persona> listarPersona(){
 		return personaR.findAll();
 	}
-	// uso de DTO
 	
-	public PersonaDTO nombreCompleto(String ced) {
-		Persona persona = personaR.findByCedula(ced);
-		PersonaDTO nombreDTO = new PersonaDTO();
-		nombreDTO.setNombreCompleto(persona.getNombre()+" "+persona.getApellido());
-		return nombreDTO;
+	public Persona personaBY(String ced) {
+		return personaR.findByCedula(ced);
 	}
 	
 }

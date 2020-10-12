@@ -17,6 +17,7 @@ import { TarjetaPublicacionesComponent } from './components/tarjeta-publicacione
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { PublicacionService } from './service/publicacion.service';
 import { PersonaService } from './service/persona.service';
+import { TarjetaComentarioComponent } from './components/tarjeta-comentario/tarjeta-comentario.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PersonaService } from './service/persona.service';
     FormPublicacionComponent,
     PublicacionesComponent,
     TarjetaPublicacionesComponent,
-    PublicacionComponent
+    PublicacionComponent,
+    TarjetaComentarioComponent
   ],
   imports: [
     BrowserModule,

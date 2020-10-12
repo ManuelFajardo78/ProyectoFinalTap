@@ -23,4 +23,8 @@ export class PublicacionService {
   obtenerid(){
     return this.http.get(this.Url + '/publcount');
   }
+
+  obtenerPublicacionesBY(usuario: string){
+    return this.http.get<Publicacion[]>(this.Url + '/listpubl/' + usuario);
+  }
 }

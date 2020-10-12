@@ -30,4 +30,14 @@ public class PublicacionControl {
 	public List<Publicacion> listarPublicaciones(){
 		return publiS.listarPublicaciones();
 	}
+	
+	@GetMapping(path = "/publcount", produces = "application/json")
+	public long contarPublicaciones(){
+		return publiS.contarP();
+	}
+	
+	@GetMapping(path = "/listpublBY/{usuario}", produces = "application/json")
+	public List<Publicacion> listarPublicacionesBy(String usuario){
+		return publiS.listarPublicacionesBy(usuario);
+	}
 }

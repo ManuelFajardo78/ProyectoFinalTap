@@ -24,4 +24,7 @@ public class ComentarioService {
 		return comentarioR.findAll();
 	}
     
+	public long contarC(){
+		return comentarioR.count();
+	}
 }

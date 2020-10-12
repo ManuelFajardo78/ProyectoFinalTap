@@ -31,4 +31,9 @@ public class ComentarioControl {
 		return comentarioS.listarComentario();
 	}
 	
+	@GetMapping(path = "/comencount", produces = "application/json")
+	public long contarPublicaciones(){
+		return comentarioS.contarC();
+	}
+	
 }

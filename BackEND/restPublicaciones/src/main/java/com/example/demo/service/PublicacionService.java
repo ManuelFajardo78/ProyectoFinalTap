@@ -21,4 +21,12 @@ public class PublicacionService {
 	public List<Publicacion> listarPublicaciones(){
 		return publiR.findAll();
 	}
+	
+	public List<Publicacion> listarPublicacionesBy(String usuario){
+		return publiR.findByUsuario(usuario);
+	}
+	
+	public long contarP(){
+		return publiR.count();
+	}
 }
