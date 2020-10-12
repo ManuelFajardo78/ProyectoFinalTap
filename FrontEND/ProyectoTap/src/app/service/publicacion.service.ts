@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Publicacion } from '../modelo/Publicacion.component';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +17,10 @@ export class PublicacionService {
   // tslint:disable-next-line: typedef
   registrarPublicacion(publicacion: Publicacion){
     return this.http.post<Publicacion>(this.Url + '/guardarpublic', publicacion);
+  }
+
+  // tslint:disable-next-line: typedef
+  obtenerid(){
+    return this.http.get(this.Url + '/publcount');
   }
 }

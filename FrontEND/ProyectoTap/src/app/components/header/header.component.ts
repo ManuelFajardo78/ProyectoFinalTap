@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { Usuario } from 'src/app/modelo/Usuario.component';
 import { Persona } from 'src/app/modelo/Persona.component';
-import { PersonaService } from 'src/app/service/persona.service';
+import { Router } from '@angular/router';
+import { routing } from '../../app.routes';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +14,14 @@ export class HeaderComponent implements OnInit {
 usuario: Usuario = LoginComponent.ususario;
 persona: Persona = LoginComponent.persona;
 pers: any;
-  constructor() {
+  constructor(private routes: Router) {
   }
 
   ngOnInit(): void {
+  }
+
+  salir(){
+    this.routes.navigate(['login']);
   }
 
 }

@@ -4,6 +4,7 @@ import { Usuario } from '../../modelo/Usuario.component';
 import { Router } from '@angular/router';
 import { PersonaService } from 'src/app/service/persona.service';
 import { Persona } from 'src/app/modelo/Persona.component';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -27,18 +28,16 @@ export class LoginComponent implements OnInit {
   ingreso(){
     this.servicio.buscarUser(this.model.usuario, this.model.password).subscribe(datos => {
       this.user = datos;
-      console.log('login' + datos);
+      if (this.user !== null){
+        this.servicio2.buscarPersonas(this.user.cedula).subscribe(datos2 => {
+        this.pers = datos2;
+        LoginComponent.persona = this.pers;
+        LoginComponent.ususario = this.user;
+        this.routes.navigate(['ingreso']);
+      });
+      }else{
+        alert('Usuario o contraseña incorrectos');
+      }
     });
-    if (this.user !== null){
-      this.servicio2.buscarPersonas(this.model.cedula).subscribe(datos => {
-      this.pers = datos;
-      console.log(datos);
-      LoginComponent.persona = this.pers;
-    });
-      LoginComponent.ususario = this.model;
-      this.routes.navigate(['ingreso']);
-    }else{
-      alert('Usuario o contraseña incorrectos');
-    }
   }
 }
