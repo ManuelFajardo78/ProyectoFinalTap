@@ -1,0 +1,26 @@
+<div class="card mb-3" style="max-width: 1050px;">
+    <div class="row no-gutters">
+        <form class="form-inline my-2 my-lg-0">
+            <img src="https://bucketimgen2.s3.amazonaws.com/{{publicacionesuser.usuario}}.jpg" width="25" height="30" alt="../../../assets/Imagen/avatar.png">
+            <h5 class="card-title">{{publicacionesuser.usuario}}</h5>
+        </form>
+        <div class="row">
+            <div class="col-sm-6">
+                <img class="card-img-top" src="https://bucketimgen2.s3.amazonaws.com/{{publicacionesuser.usuario}}_{{publicacionesuser.id}}.jpg" alt="Card image cap">
+            </div>
+            <div class="col-sm-6">
+                <div class="card-body">
+                    <p class="card-text">{{publicacionesuser.publicacion}} </p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Fecha: {{publicacionesuser.fecha}}</li>
+                    </ul>
+                    <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicacionesuser.usuario}}_{{publicacionesuser.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload">
+                </audio>
+                </div>
+            </div>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+
+        </form>
+    </div>
+</div>
