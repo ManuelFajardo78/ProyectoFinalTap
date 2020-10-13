@@ -21,14 +21,12 @@ export class TarjetaPublicacionesComponent implements OnInit {
   conteo: any;
   comentario: Comentario;
   comentarios: any;
+  showImagen = false;
   constructor(private service: ComentarioService, private routes: Router) {
     this.publicSleccionado = new EventEmitter();
   }
   ngOnInit(): void {
-    this.service.obtenerComentario(this.publicaciones.id).subscribe(datos => {
-      this.comentarios = datos;
-      console.log(datos);
-    });
+    this.obtenerComentarios();
   }
 
   // tslint:disable-next-line: typedef
@@ -40,8 +38,19 @@ export class TarjetaPublicacionesComponent implements OnInit {
       this.model.id = this.conteo + 1;
       if (this.model.id !== 0 && this.model.comentario !== '' && this.model.usuario !== null && this.model.id_publicacion !== 0){
         this.service.registrarComentario(this.model).subscribe(data2 => console.log(data2));
+        this.obtenerComentarios();
       }
     });
   }
 
+  // tslint:disable-next-line: typedef
+  obtenerComentarios(){
+    this.service.obtenerComentario(this.publicaciones.id).subscribe(datos => {
+      this.comentarios = datos;
+      console.log(datos);
+      if (datos !== null){
+        this.showImagen = true;
+      }
+    });
+  }
 }

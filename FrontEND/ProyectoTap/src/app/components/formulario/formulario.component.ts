@@ -25,7 +25,7 @@ export class FormularioComponent implements OnInit {
   subiendo = false;
 
   public model: Persona = {cedula: '', nombre: '', apellido: '', email: ''};
-  public model2: Usuario = {usuario: '', password: '', cedula: this.model.cedula};
+  public model2: Usuario = {usuario: '', password: '', cedula: ''};
   constructor(private servicio: PersonaService, private servicio2: UsuarioService, private routes: Router) {
     // Initialize the Amazon Cognito credentials provider
   AWS.config.region = 'us-east-1'; // Region
@@ -75,6 +75,7 @@ export class FormularioComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   public registUser(){
+    this.model2.cedula = this.model.cedula;
     this.servicio2.registrarUsuario(this.model2).subscribe(data => console.log(data));
   }
 

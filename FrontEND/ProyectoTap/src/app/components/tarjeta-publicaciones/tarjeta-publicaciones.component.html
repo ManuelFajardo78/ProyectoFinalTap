@@ -3,6 +3,8 @@
         <form class="form-inline my-2 my-lg-0">
             <img src="https://bucketimgen2.s3.amazonaws.com/{{publicaciones.usuario}}.jpg" width="25" height="30" alt="../../../assets/Imagen/avatar.png">
             <h5 class="card-title">{{publicaciones.usuario}}</h5>
+            <pre>                                                                                              </pre>
+            <h6>Fecha: {{publicaciones.fecha}}</h6>
         </form>
         <div class="row">
             <div class="col-sm-6">
@@ -11,11 +13,7 @@
             <div class="col-sm-6">
                 <div class="card-body">
                     <p class="card-text">{{publicaciones.publicacion}} </p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Fecha: {{publicaciones.fecha}}</li>
-                    </ul>
-                    <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload">
-                </audio>
+                    <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload"></audio>
                 </div>
             </div>
         </div>

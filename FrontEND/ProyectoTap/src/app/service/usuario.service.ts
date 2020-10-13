@@ -17,7 +17,7 @@ export class UsuarioService {
 
   // tslint:disable-next-line: typedef
   registrarUsuario(user: Usuario){
-    return this.http.post<Usuario>(this.Url + '/guardaruser', user);
+    return this.http.post<Usuario>(this.Url + '/guardarusuario', user);
   }
 
   buscarUser(user: string, pass: string):

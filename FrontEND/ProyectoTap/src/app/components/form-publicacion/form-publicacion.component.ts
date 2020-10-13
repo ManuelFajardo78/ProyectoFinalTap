@@ -111,7 +111,9 @@ export class FormPublicacionComponent implements OnInit {
   }
   // tslint:disable-next-line: typedef
   crearPublicacion(){
-    this.registrarBA();
+    if (this.ingaudio){
+      this.registrarBA();
+    }
     this.servicio.registrarPublicacion(this.model3).subscribe(data => {
       console.log(data);
     });
