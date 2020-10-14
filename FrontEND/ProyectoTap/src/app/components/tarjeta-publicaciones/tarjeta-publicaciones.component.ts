@@ -4,7 +4,6 @@ import { Publicacion } from 'src/app/modelo/Publicacion.component';
 import { ComentarioService } from '../../service/comentario.service';
 import { Comentario } from '../../modelo/Comentario.component';
 import { LoginComponent } from '../login/login.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarjeta-publicaciones',
@@ -13,18 +12,20 @@ import { Router } from '@angular/router';
 })
 export class TarjetaPublicacionesComponent implements OnInit {
 
+  constructor(private service: ComentarioService) {
+    this.publicSleccionado = new EventEmitter();
+  }
+
   @Input() publicaciones: Publicacion;
   @Input() indice: number;
   @Output() publicSleccionado: EventEmitter<number>;
+
 
   model: Comentario = {id: 0, usuario: LoginComponent.ususario.usuario, comentario: '', id_publicacion: 0};
   conteo: any;
   comentario: Comentario;
   comentarios: any;
   showImagen = false;
-  constructor(private service: ComentarioService, private routes: Router) {
-    this.publicSleccionado = new EventEmitter();
-  }
   ngOnInit(): void {
     this.obtenerComentarios();
   }

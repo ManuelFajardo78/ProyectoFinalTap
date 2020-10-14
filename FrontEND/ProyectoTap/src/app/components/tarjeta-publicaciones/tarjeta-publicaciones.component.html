@@ -8,16 +8,18 @@
         </form>
         <div class="row">
             <div class="col-sm-6">
-                <img class="card-img-top" src="https://bucketimgen2.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.jpg" alt="Card image cap">
+                <img class="card-img-top" src="https://bucketimgen2.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.jpg" alt="">
             </div>
             <div class="col-sm-6">
                 <div class="card-body">
                     <p class="card-text">{{publicaciones.publicacion}} </p>
-                    <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload"></audio>
+                    <HR>
+                    <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicaciones.usuario}}_{{publicaciones.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload" alt=""></audio>
                 </div>
             </div>
         </div>
     </div>
+    <HR>
     <div class="row no-gutters">
         <h5 class="card-title">Comentarios:</h5>
         <div align="center" class="row row-cols-1">

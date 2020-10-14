@@ -3,24 +3,30 @@
         <form class="form-inline my-2 my-lg-0">
             <img src="https://bucketimgen2.s3.amazonaws.com/{{publicacionesuser.usuario}}.jpg" width="25" height="30" alt="../../../assets/Imagen/avatar.png">
             <h5 class="card-title">{{publicacionesuser.usuario}}</h5>
+            <pre>                                                                                         </pre>
+            <h6>Fecha: {{publicacionesuser.fecha}}</h6>
         </form>
         <div class="row">
             <div class="col-sm-6">
-                <img class="card-img-top" src="https://bucketimgen2.s3.amazonaws.com/{{publicacionesuser.usuario}}_{{publicacionesuser.id}}.jpg" alt="Card image cap">
+                <img class="card-img-top" src="https://bucketimgen2.s3.amazonaws.com/{{publicacionesuser.usuario}}_{{publicacionesuser.id}}.jpg" alt="">
             </div>
             <div class="col-sm-6">
                 <div class="card-body">
                     <p class="card-text">{{publicacionesuser.publicacion}} </p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Fecha: {{publicacionesuser.fecha}}</li>
-                    </ul>
-                    <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicacionesuser.usuario}}_{{publicacionesuser.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload">
-                </audio>
+                    <HR>
+                    <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicacionesuser.usuario}}_{{publicacionesuser.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload"></audio>
+                    <form>
+                        <button (click)="enviarDatos()" type="button" class="btn btn-success">Editar</button>
+                        <button (click)="eliminar()" type="button" class="btn btn-danger">Eliminar</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-
-        </form>
+        <div class="row no-gutters">
+            <h5 class="card-title">Comentarios:</h5>
+            <div align="center" class="row row-cols-1">
+                <app-tarjeta-comentario [comentarios]="comentario" *ngFor="let comentario of comentarios let id=index;" [indice]="id"></app-tarjeta-comentario>
+            </div>
+        </div>
     </div>
 </div>

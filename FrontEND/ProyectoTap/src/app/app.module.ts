@@ -14,12 +14,12 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { FormPublicacionComponent } from './components/form-publicacion/form-publicacion.component';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 import { TarjetaPublicacionesComponent } from './components/tarjeta-publicaciones/tarjeta-publicaciones.component';
-import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { PublicacionService } from './service/publicacion.service';
 import { PersonaService } from './service/persona.service';
 import { TarjetaComentarioComponent } from './components/tarjeta-comentario/tarjeta-comentario.component';
 import { PublicacionesuserComponent } from './components/publicacionesuser/publicacionesuser.component';
 import { TarjetaPublicacionesuserComponent } from './components/tarjeta-publicacionesuser/tarjeta-publicacionesuser.component';
+import { EditpublicacionComponent } from './components/editpublicacion/editpublicacion.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +33,10 @@ import { TarjetaPublicacionesuserComponent } from './components/tarjeta-publicac
     FormPublicacionComponent,
     PublicacionesComponent,
     TarjetaPublicacionesComponent,
-    PublicacionComponent,
     TarjetaComentarioComponent,
     PublicacionesuserComponent,
-    TarjetaPublicacionesuserComponent
+    TarjetaPublicacionesuserComponent,
+    EditpublicacionComponent
   ],
   imports: [
     BrowserModule,

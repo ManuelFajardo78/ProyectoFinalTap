@@ -19,6 +19,10 @@ export class PublicacionService {
   registrarPublicacion(publicacion: Publicacion){
     return this.http.post<Publicacion>(this.Url + '/guardarpublic', publicacion);
   }
+  // tslint:disable-next-line: typedef
+  eliminarPublicacion(id: number){
+    return this.http.delete(this.Url + '/eliminarID/' + id);
+  }
 
   // tslint:disable-next-line: typedef
   obtenerid(){

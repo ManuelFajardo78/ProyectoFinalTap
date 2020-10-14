@@ -1,19 +1,20 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Publicacion } from '../../modelo/Publicacion.component';
-import { PublicacionService } from '../../service/publicacion.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
 import * as AWS from 'aws-sdk';
+import { Publicacion } from 'src/app/modelo/Publicacion.component';
+import { PublicacionService } from 'src/app/service/publicacion.service';
+import { LoginComponent } from '../login/login.component';
+import { TarjetaPublicacionesuserComponent } from '../tarjeta-publicacionesuser/tarjeta-publicacionesuser.component';
 declare const navigator: any;
 declare const MediaRecorder: any;
 
 @Component({
-  selector: 'app-form-publicacion',
-  templateUrl: './form-publicacion.component.html',
-  styleUrls: ['./form-publicacion.component.css']
+  selector: 'app-editpublicacion',
+  templateUrl: './editpublicacion.component.html',
+  styleUrls: ['./editpublicacion.component.css']
 })
-export class FormPublicacionComponent implements OnInit {
-
+export class EditpublicacionComponent implements OnInit {
+  publicacion: Publicacion = TarjetaPublicacionesuserComponent.publicacionDatos;
   // S3
   albumBucketNameI = 'bucketimgen2';
   s3 = new AWS.S3({
@@ -43,8 +44,8 @@ export class FormPublicacionComponent implements OnInit {
   error = false;
   subiendo = false;
 
-
-  conteo: any;
+  bucketInstance: any;
+  params: any;
 
   // audio
   public isRecording: boolean = false;
@@ -84,13 +85,7 @@ export class FormPublicacionComponent implements OnInit {
     navigator.getUserMedia({ audio: true }, onSuccess, e => console.log(e));
     }
 
-  ngOnInit(): void {
-    this.servicio.obtenerid().subscribe(data => {
-      console.log(data);
-      this.conteo = data;
-      this.model3.id = this.conteo + 1;
-    });
-  }
+  ngOnInit(): void {}
 
   public record() {
     this.isRecording = true;
@@ -103,8 +98,15 @@ export class FormPublicacionComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  public realizarPublicacion(){
-    if (this.model3.usuario !== '' && this.model3.id !== 0 && this.model3.publicacion !== '' && this.showImagen && this.showAudio){
+  public editarPublicacion(){
+    this.model3.id = this.publicacion.id;
+    if (this.showImagen){
+      this.eliminarBuketsI();
+    }
+    if (this.showAudio){
+      this.eliminarBuketsA();
+    }
+    if (this.model3.usuario !== '' && this.model3.id !== 0 && this.model3.publicacion !== '') {
       this.crearPublicacion();
       this.routes.navigate(['ingreso']);
     }else{
@@ -113,7 +115,9 @@ export class FormPublicacionComponent implements OnInit {
   }
   // tslint:disable-next-line: typedef
   crearPublicacion(){
-    this.registrarBA();
+    if (this.showAudio){
+      this.registrarBA();
+    }
     this.servicio.registrarPublicacion(this.model3).subscribe(data => {
       console.log(data);
     });
@@ -184,4 +188,35 @@ export class FormPublicacionComponent implements OnInit {
       alert('Grabe un audio');
     }
   }
+
+  eliminarBuketsI() {
+    this.bucketInstance  = new AWS.S3();
+    this.params = {
+        Bucket: 'bucketimgen2',
+        Key: this.publicacion.usuario + '_' + this.publicacion.id + '.jpg'
+    };
+    this.bucketInstance.deleteObject(this.params, (error, data) => {
+        if (data) {
+            console.log('la imagen se elimino');
+        } else {
+            console.log('imagen no eliminada ' + error);
+        }
+    });
+
+  }
+  eliminarBuketsA() {
+    this.bucketInstance = new AWS.S3();
+    this.params = {
+        Bucket: 'bucketaudiotap',
+        Key: this.publicacion.usuario + '_' + this.publicacion.id + '.mp3'
+    };
+    this.bucketInstance.deleteObject(this.params, (err, data) => {
+        if (data) {
+            console.log('el audio se elimino');
+        } else {
+            console.log('audio no eliminada' + err);
+        }
+    });
+  }
+
 }

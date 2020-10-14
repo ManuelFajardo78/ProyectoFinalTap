@@ -1,0 +1,49 @@
+<div align="center">
+    <br>
+    <h1>Editar Publicación</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <img src="https://bucketimgen2.s3.amazonaws.com/{{publicacion.usuario}}_{{publicacion.id}}.jpg" width="25" height="30" alt="../../../assets/Imagen/avatar.png">
+        <label for="comment">  Cargar Imagen:</label>
+        <table>
+            <div class="form-group">
+                <tr>
+                    <td width="50%">
+                        <form>
+                            <input type="file" name="archivo" (change)="onChange($event)" />
+                            <h5 *ngIf="subiendo">Subiendo imagen...</h5>
+                            <button href="#" (click)="onClickSubir($event)">Subir Imagen Seleccionada</button>
+                            <div class="" *ngIf="showImagen" style="width: 100px;">
+                                <h1>Imagen subida</h1>
+                                <a [href]="urlImagen" target="_blank"></a>
+                                <img class="imgn-fluid" [src]="urlImagen" alt="" width="300" height="250" />
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <div>
+            <label for="comment">  Publicación:</label>
+            <textarea class="form-control" rows="5" id="publicacion" name="publicacion" [(ngModel)]="model3.publicacion"></textarea>
+        </div>
+        <div>
+            <br>
+            <HR>
+            <audio src="https://bucketaudiotap.s3.amazonaws.com/{{publicacion.usuario}}_{{publicacion.id}}.mp3" type="audio/mpeg" controls="controls" type="audio/mpeg" preload="preload" alt=""></audio>
+            <label for="comment">  Grabar Audio: </label>
+            <div>
+                <button [disabled]="isRecording" (click)="record()">Record</button>
+                <button [disabled]="!isRecording" (click)="stop()">Stop</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div align="center">
+    <br>
+    <button (click)="editarPublicacion()" type="button" class="btn btn-lg btn-primary">Editar Publicación</button>
+</div>
